@@ -18,8 +18,9 @@
 >>DType：VR设备类型
 >>DeviceID：VR设备ID(自定义值，实为socket通信端口号，因此必须保证该端口空闲)
 
->### 2.public IntPtr Init()
+>### 2.public IntPtr Init(int ProcessId)
 >>初始化设备
+>>ProcessId: 主程序进程id，用于主程序异常退出时VR设备自杀进程
 >>返回值：VRDevice窗口句柄，可用于窗口大小变化等操作
 
 >### 3.public string InputFrameData(string ImageUrl)
@@ -42,10 +43,47 @@
 >>关闭设备：退出VRDevice，关闭socket通信
 >>无参无返回值
 
->### 7.public Vector3 GetlocalPosition(Vector3 point)
+>### 7.public static Vector3 GetlocalPosition(Vector3 point)
 >>获取指定坐标点在窗口的位置
 >>point：坐标点值
 >>返回值：窗口位置坐标值
+
+>### 8.public static Vector3 GetWorldPositon(float x ,float y)
+>>获取屏幕坐标对应的VR空间世界坐标
+>>x：屏幕坐标x值
+>>y：屏幕坐标y值
+>>返回值：VR空间世界坐标值
+
+>### 9.public void AutoCameraRotation(bool auto,int horizontal, int vertical ,bool canViewReversal = false)
+>>控制视角相机转动
+>>auto：是否开始转动
+>>horizontal：水平按下转动速度，单位为度每秒
+>>vertical：垂直方向转动速度，单位为度每秒
+>>canViewReversal：视角是否允许上下颠倒，可选参数，默认为false，即不可颠倒
+
+>### 10.public void LookTarget(Vector3 target, int FOV = 0)
+>>视角导航至目标点
+>>target：目标点三维坐标值
+>>FOV：相机视角，可选参数，默认为0代表保持当前视角值
+
+>### 11.public void CameraZoom(int value)
+>>相机缩放控制，通过改变相机视野大小实现缩放，相机视野取值范围设定为[20,100]
+>>value：速度值，每秒缩放度数，正值为放大，反之缩小
+
+>>### 12.public void CameraZoomTarget(float value)
+>>视野缩放到指定系数
+>>value：缩放系数值，取值-1到1(1为放大原来一倍，-1为缩小原来一倍)。
+
+>>### 13.public void StopCameraControl()
+>>停止云台操作，包含转动和缩放
+
+>>### 14.public int GetFieldOfView()
+>>获取当前VR空间相机视角值
+>>返回值：视角度数值
+
+>>### 15.public void PauseVR(bool value)
+>>暂停VRDevice
+>>value：true为暂停，false为取消暂停
 
 ## 三、委托回调
 >### 1.public Action HasInited
@@ -111,7 +149,7 @@
             vrDevice.RightClick += HandleRightClick;
 
             //初始化设备，并获取窗口句柄
-            unityHWND = vrDevice.Init();
+            unityHWND = vrDevice.Init(Process.GetCurrentProcess().Id);
             tempPoint = new Vector3(0, 0, 0);
         }
 
