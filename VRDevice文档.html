@@ -1,0 +1,821 @@
+<!DOCTYPE html><html><head>
+      <title>VRDevice&#x6587;&#x6863;</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///C:\Users\yewei\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.3.8\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+      <style> 
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+.markdown-preview.markdown-preview body {
+  font-family: "Microsoft Yahei", Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px;
+  color: #516272;
+}
+.markdown-preview.markdown-preview body > *:first-child {
+  margin-top: 0 !important;
+}
+.markdown-preview.markdown-preview body > *:last-child {
+  margin-bottom: 0 !important;
+}
+.markdown-preview.markdown-preview a {
+  color: #4183C4;
+}
+.markdown-preview.markdown-preview a.absent {
+  color: #cc0000;
+}
+.markdown-preview.markdown-preview a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+.markdown-preview.markdown-preview h1,
+.markdown-preview.markdown-preview h2,
+.markdown-preview.markdown-preview h3,
+.markdown-preview.markdown-preview h4,
+.markdown-preview.markdown-preview h5,
+.markdown-preview.markdown-preview h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative;
+}
+.markdown-preview.markdown-preview h1:hover a.anchor,
+.markdown-preview.markdown-preview h2:hover a.anchor,
+.markdown-preview.markdown-preview h3:hover a.anchor,
+.markdown-preview.markdown-preview h4:hover a.anchor,
+.markdown-preview.markdown-preview h5:hover a.anchor,
+.markdown-preview.markdown-preview h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none;
+}
+.markdown-preview.markdown-preview h1 tt,
+.markdown-preview.markdown-preview h1 code {
+  font-size: inherit;
+}
+.markdown-preview.markdown-preview h2 tt,
+.markdown-preview.markdown-preview h2 code {
+  font-size: inherit;
+}
+.markdown-preview.markdown-preview h3 tt,
+.markdown-preview.markdown-preview h3 code {
+  font-size: inherit;
+}
+.markdown-preview.markdown-preview h4 tt,
+.markdown-preview.markdown-preview h4 code {
+  font-size: inherit;
+}
+.markdown-preview.markdown-preview h5 tt,
+.markdown-preview.markdown-preview h5 code {
+  font-size: inherit;
+}
+.markdown-preview.markdown-preview h6 tt,
+.markdown-preview.markdown-preview h6 code {
+  font-size: inherit;
+}
+.markdown-preview.markdown-preview h1 {
+  font-size: 28px;
+  color: #2B3F52;
+}
+.markdown-preview.markdown-preview h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #DDE4E9;
+  color: #2B3F52;
+}
+.markdown-preview.markdown-preview h3 {
+  font-size: 18px;
+  color: #2B3F52;
+}
+.markdown-preview.markdown-preview h4 {
+  font-size: 16px;
+  color: #2B3F52;
+}
+.markdown-preview.markdown-preview h5 {
+  font-size: 14px;
+  color: #2B3F52;
+}
+.markdown-preview.markdown-preview h6 {
+  color: #2B3F52;
+  font-size: 14px;
+}
+.markdown-preview.markdown-preview p,
+.markdown-preview.markdown-preview blockquote,
+.markdown-preview.markdown-preview ul,
+.markdown-preview.markdown-preview ol,
+.markdown-preview.markdown-preview dl,
+.markdown-preview.markdown-preview li,
+.markdown-preview.markdown-preview table,
+.markdown-preview.markdown-preview pre {
+  margin: 15px 0;
+  color: #516272;
+}
+.markdown-preview.markdown-preview hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+.markdown-preview.markdown-preview body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+.markdown-preview.markdown-preview body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+.markdown-preview.markdown-preview body > h1:first-child + h2 {
+  margin-top: 0;
+  padding-top: 0;
+}
+.markdown-preview.markdown-preview body > h3:first-child,
+.markdown-preview.markdown-preview body > h4:first-child,
+.markdown-preview.markdown-preview body > h5:first-child,
+.markdown-preview.markdown-preview body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+.markdown-preview.markdown-preview a:first-child h1,
+.markdown-preview.markdown-preview a:first-child h2,
+.markdown-preview.markdown-preview a:first-child h3,
+.markdown-preview.markdown-preview a:first-child h4,
+.markdown-preview.markdown-preview a:first-child h5,
+.markdown-preview.markdown-preview a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+.markdown-preview.markdown-preview h1 p,
+.markdown-preview.markdown-preview h2 p,
+.markdown-preview.markdown-preview h3 p,
+.markdown-preview.markdown-preview h4 p,
+.markdown-preview.markdown-preview h5 p,
+.markdown-preview.markdown-preview h6 p {
+  margin-top: 0;
+}
+.markdown-preview.markdown-preview li p.first {
+  display: inline-block;
+}
+.markdown-preview.markdown-preview li {
+  margin: 0;
+}
+.markdown-preview.markdown-preview ul,
+.markdown-preview.markdown-preview ol {
+  padding-left: 30px;
+}
+.markdown-preview.markdown-preview ul :first-child,
+.markdown-preview.markdown-preview ol :first-child {
+  margin-top: 0;
+}
+.markdown-preview.markdown-preview dl {
+  padding: 0;
+}
+.markdown-preview.markdown-preview dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+.markdown-preview.markdown-preview dl dt:first-child {
+  padding: 0;
+}
+.markdown-preview.markdown-preview dl dt > :first-child {
+  margin-top: 0;
+}
+.markdown-preview.markdown-preview dl dt > :last-child {
+  margin-bottom: 0;
+}
+.markdown-preview.markdown-preview dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+.markdown-preview.markdown-preview dl dd > :first-child {
+  margin-top: 0;
+}
+.markdown-preview.markdown-preview dl dd > :last-child {
+  margin-bottom: 0;
+}
+.markdown-preview.markdown-preview blockquote {
+  border-left: 4px solid #ECF0F3;
+  /*padding: 0 15px;*/
+  padding: 15px;
+  background-color: #F7F9FA;
+  color: #2B3F52;
+}
+.markdown-preview.markdown-preview blockquote > :first-child {
+  margin-top: 0;
+}
+.markdown-preview.markdown-preview blockquote > :last-child {
+  margin-bottom: 0;
+}
+.markdown-preview.markdown-preview table {
+  padding: 0;
+  border-collapse: collapse;
+}
+.markdown-preview.markdown-preview table tr {
+  border-top: 1px solid #cccccc;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+.markdown-preview.markdown-preview table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+.markdown-preview.markdown-preview table tr th {
+  font-weight: bold;
+  border: 1px solid #cccccc;
+  margin: 0;
+  padding: 6px 13px;
+}
+.markdown-preview.markdown-preview table tr td {
+  border: 1px solid #cccccc;
+  margin: 0;
+  padding: 6px 13px;
+}
+.markdown-preview.markdown-preview table tr th :first-child,
+.markdown-preview.markdown-preview table tr td :first-child {
+  margin-top: 0;
+}
+.markdown-preview.markdown-preview table tr th :last-child,
+.markdown-preview.markdown-preview table tr td :last-child {
+  margin-bottom: 0;
+}
+.markdown-preview.markdown-preview img {
+  max-width: 100%;
+}
+.markdown-preview.markdown-preview span.frame {
+  display: block;
+  overflow: hidden;
+}
+.markdown-preview.markdown-preview span.frame > span {
+  border: 1px solid #dddddd;
+  display: block;
+  float: left;
+  overflow: hidden;
+  margin: 13px 0 0;
+  padding: 7px;
+  width: auto;
+}
+.markdown-preview.markdown-preview span.frame span img {
+  display: block;
+  float: left;
+}
+.markdown-preview.markdown-preview span.frame span span {
+  clear: both;
+  color: #333333;
+  display: block;
+  padding: 5px 0 0;
+}
+.markdown-preview.markdown-preview span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+.markdown-preview.markdown-preview span.align-center > span {
+  display: block;
+  overflow: hidden;
+  margin: 13px auto 0;
+  text-align: center;
+}
+.markdown-preview.markdown-preview span.align-center span img {
+  margin: 0 auto;
+  text-align: center;
+}
+.markdown-preview.markdown-preview span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+.markdown-preview.markdown-preview span.align-right > span {
+  display: block;
+  overflow: hidden;
+  margin: 13px 0 0;
+  text-align: right;
+}
+.markdown-preview.markdown-preview span.align-right span img {
+  margin: 0;
+  text-align: right;
+}
+.markdown-preview.markdown-preview span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left;
+}
+.markdown-preview.markdown-preview span.float-left span {
+  margin: 13px 0 0;
+}
+.markdown-preview.markdown-preview span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right;
+}
+.markdown-preview.markdown-preview span.float-right > span {
+  display: block;
+  overflow: hidden;
+  margin: 13px auto 0;
+  text-align: right;
+}
+.markdown-preview.markdown-preview code,
+.markdown-preview.markdown-preview tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+.markdown-preview.markdown-preview pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+.markdown-preview.markdown-preview .highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+.markdown-preview.markdown-preview pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+.markdown-preview.markdown-preview pre code,
+.markdown-preview.markdown-preview pre tt {
+  background-color: transparent;
+  border: none;
+}
+.markdown-preview.markdown-preview sup {
+  font-size: 0.83em;
+  vertical-align: super;
+  line-height: 0;
+}
+.markdown-preview.markdown-preview code {
+  white-space: pre-wrap;
+  word-break: break-all;
+  display: block;
+}
+.markdown-preview.markdown-preview * {
+  -webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+  .markdown-preview.markdown-preview body {
+    width: 960px;
+    margin: 0 auto;
+  }
+}
+@media print {
+  .markdown-preview.markdown-preview table,
+  .markdown-preview.markdown-preview pre {
+    page-break-inside: avoid;
+  }
+  .markdown-preview.markdown-preview pre {
+    word-wrap: break-word;
+  }
+}
+ 
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview   ">
+      <h1 class="mume-header" id="vrdevice%E6%96%87%E6%A1%A3%E8%AF%B4%E6%98%8E">VRDevice&#x6587;&#x6863;&#x8BF4;&#x660E;</h1>
+
+<ul>
+<li><a href="#vrdevice%E6%96%87%E6%A1%A3%E8%AF%B4%E6%98%8E">VRDevice&#x6587;&#x6863;&#x8BF4;&#x660E;</a>
+<ul>
+<li><a href="#%E4%B8%80-%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8%E6%B5%81%E7%A8%8B">&#x4E00;&#x3001;&#x63A5;&#x53E3;&#x8C03;&#x7528;&#x6D41;&#x7A0B;</a></li>
+<li><a href="#%E4%BA%8C-%E6%8E%A5%E5%8F%A3%E5%87%BD%E6%95%B0%E8%AF%B4%E6%98%8E">&#x4E8C;&#x3001;&#x63A5;&#x53E3;&#x51FD;&#x6570;&#x8BF4;&#x660E;</a></li>
+<li><a href="#%E4%B8%89-%E5%A7%94%E6%89%98%E5%9B%9E%E8%B0%83">&#x4E09;&#x3001;&#x59D4;&#x6258;&#x56DE;&#x8C03;</a></li>
+<li><a href="#%E5%9B%9B-%E6%9E%9A%E4%B8%BE%E8%AF%B4%E6%98%8E">&#x56DB;&#x3001;&#x679A;&#x4E3E;&#x8BF4;&#x660E;</a></li>
+<li><a href="#%E4%BA%94-vector3%E7%B1%BB">&#x4E94;&#x3001;Vector3&#x7C7B;</a></li>
+<li><a href="#%E5%85%AD-%E8%B0%83%E7%94%A8%E5%AE%9E%E4%BE%8B%E5%8F%82%E8%80%83">&#x516D;&#x3001;&#x8C03;&#x7528;&#x5B9E;&#x4F8B;&#x53C2;&#x8003;</a></li>
+</ul>
+</li>
+</ul>
+<h2 class="mume-header" id="%E4%B8%80-%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8%E6%B5%81%E7%A8%8B">&#x4E00;&#x3001;&#x63A5;&#x53E3;&#x8C03;&#x7528;&#x6D41;&#x7A0B;</h2>
+
+<p>&#x5C06;&#x7EC4;&#x4EF6;&#x5185;&#x5BB9;&#x6587;&#x4EF6;&#x5939;&#x5185;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x53CA;&#x6587;&#x4EF6;&#x5939;&#x62F7;&#x8D1D;&#x5230;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x6DFB;&#x52A0;&#x5BF9;VRDevice.dll&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x6DFB;&#x52A0;&#x547D;&#x540D;&#x7A7A;&#x95F4;GosuncnVRDevice&#x3002;</p>
+<blockquote>
+<p>1.&#x521B;&#x5EFA;&#x8BBE;&#x5907;&#x5B9E;&#x4F8B;&#xFF1A;<code>new VRDevice()</code><br>
+2.&#x76D1;&#x542C;&#x59D4;&#x6258;&#x4E8B;&#x4EF6; <code>VRDevice.HasInited;VRDevice.RightClick</code><br>
+3.&#x521D;&#x59CB;&#x5316;&#x8BBE;&#x5907; <code>VRDevice.Init()</code><br>
+4.&#x63A8;&#x9001;&#x573A;&#x666F;&#x6570;&#x636E; <code>VRDevice.InputFrameData()</code><br>
+5.&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#x5176;&#x4ED6;&#x64CD;&#x4F5C;</p>
+<p>6.&#x5173;&#x95ED;&#x8BBE;&#x5907; <code>VRDevice.CloseVRDevice()</code></p>
+</blockquote>
+<h2 class="mume-header" id="%E4%BA%8C-%E6%8E%A5%E5%8F%A3%E5%87%BD%E6%95%B0%E8%AF%B4%E6%98%8E">&#x4E8C;&#x3001;&#x63A5;&#x53E3;&#x51FD;&#x6570;&#x8BF4;&#x660E;</h2>
+
+<blockquote>
+<h3>1.public VRDevice (IntPtr Container, DeviceType DType, int DeviceID)</h3>
+<blockquote>
+<p>&#x521B;&#x5EFA;VR&#x8BBE;&#x5907;<br>
+Container&#xFF1A;&#x627F;&#x8F7D;&#x8BBE;&#x5907;&#x8F93;&#x51FA;&#x5BB9;&#x5668;&#xFF08;&#x5EFA;&#x8BAE;&#x4E3A;pannel&#xFF09;&#x7684;&#x53E5;&#x67C4;&#xFF0C;&#x5173;&#x95ED;&#x8BE5;&#x5BB9;&#x5668;&#x65F6;&#x5FC5;&#x987B;&#x8C03;&#x7528;CloseVRDevice&#x65B9;&#x6CD5;&#x5173;&#x95ED;&#x8BBE;&#x5907;<br>
+DType&#xFF1A;VR&#x8BBE;&#x5907;&#x7C7B;&#x578B;<br>
+DeviceID&#xFF1A;VR&#x8BBE;&#x5907;ID(&#x81EA;&#x5B9A;&#x4E49;&#x503C;&#xFF0C;&#x5B9E;&#x4E3A;socket&#x901A;&#x4FE1;&#x7AEF;&#x53E3;&#x53F7;&#xFF0C;&#x56E0;&#x6B64;&#x5FC5;&#x987B;&#x4FDD;&#x8BC1;&#x8BE5;&#x7AEF;&#x53E3;&#x7A7A;&#x95F2;)</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<h3>2.public IntPtr Init()</h3>
+<blockquote>
+<p>&#x521D;&#x59CB;&#x5316;&#x8BBE;&#x5907;<br>
+&#x8FD4;&#x56DE;&#x503C;&#xFF1A;VRDevice&#x7A97;&#x53E3;&#x53E5;&#x67C4;&#xFF0C;&#x53EF;&#x7528;&#x4E8E;&#x7A97;&#x53E3;&#x5927;&#x5C0F;&#x53D8;&#x5316;&#x7B49;&#x64CD;&#x4F5C;</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<h3>3.public string InputFrameData(string ImageUrl)</h3>
+<blockquote>
+<p>&#x9001;&#x5165;&#x573A;&#x666F;&#x5E27;&#x6570;&#x636E;<br>
+ImageUrl&#xFF1A;&#x56FE;&#x50CF;&#x6587;&#x4EF6;Url&#xFF08;&#x652F;&#x6301;&#x7F51;&#x7EDC;&#x5730;&#x5740;&#x6216;&#x672C;&#x5730;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#xFF09;<br>
+&#x8FD4;&#x56DE;&#x503C;&#xFF1A;&#x63A8;&#x9001;&#x7ED3;&#x679C;&#x63CF;&#x8FF0;</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<h3>4.public string InputFrameData(byte[] data)</h3>
+<blockquote>
+<p>&#x9001;&#x5165;&#x573A;&#x666F;&#x5E27;&#x6570;&#x636E;&#x91CD;&#x8F7D;<br>
+data&#xFF1A;RGB&#x56FE;&#x50CF;&#x6570;&#x636E;<br>
+&#x8FD4;&#x56DE;&#x503C;&#xFF1A;&#x63A8;&#x9001;&#x7ED3;&#x679C;&#x63CF;&#x8FF0;</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<h3>5.public string InputFrameData(IntPtr pBuf,uint nSize)</h3>
+<blockquote>
+<p>&#x9001;&#x5165;&#x573A;&#x666F;&#x5E27;&#x6570;&#x636E;&#x91CD;&#x8F7D;<br>
+pBuf&#xFF1A;RGB&#x56FE;&#x50CF;&#x6570;&#x636E;&#x5185;&#x5B58;&#x6307;&#x9488;<br>
+nSize&#xFF1A;&#x6570;&#x636E;&#x957F;&#x5EA6;<br>
+&#x8FD4;&#x56DE;&#x503C;&#xFF1A;&#x63A8;&#x9001;&#x7ED3;&#x679C;&#x63CF;&#x8FF0;</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<h3>6.public void CloseVRDevice()</h3>
+<blockquote>
+<p>&#x5173;&#x95ED;&#x8BBE;&#x5907;&#xFF1A;&#x9000;&#x51FA;VRDevice&#xFF0C;&#x5173;&#x95ED;socket&#x901A;&#x4FE1;<br>
+&#x65E0;&#x53C2;&#x65E0;&#x8FD4;&#x56DE;&#x503C;</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<h3>7.public Vector3 GetlocalPosition(Vector3 point)</h3>
+<blockquote>
+<p>&#x83B7;&#x53D6;&#x6307;&#x5B9A;&#x5750;&#x6807;&#x70B9;&#x5728;&#x7A97;&#x53E3;&#x7684;&#x4F4D;&#x7F6E;<br>
+point&#xFF1A;&#x5750;&#x6807;&#x70B9;&#x503C;<br>
+&#x8FD4;&#x56DE;&#x503C;&#xFF1A;&#x7A97;&#x53E3;&#x4F4D;&#x7F6E;&#x5750;&#x6807;&#x503C;</p>
+</blockquote>
+</blockquote>
+<h2 class="mume-header" id="%E4%B8%89-%E5%A7%94%E6%89%98%E5%9B%9E%E8%B0%83">&#x4E09;&#x3001;&#x59D4;&#x6258;&#x56DE;&#x8C03;</h2>
+
+<blockquote>
+<h3>1.public Action HasInited</h3>
+<blockquote>
+<p>&#x8BBE;&#x5907;&#x521D;&#x59CB;&#x5316;&#x5B8C;&#x6210;Action&#xFF0C;&#x7528;&#x4E8E;&#x76D1;&#x542C;&#x8BBE;&#x5907;&#x521D;&#x59CB;&#x5316;&#x662F;&#x5426;&#x5B8C;&#x6210;</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<h3>2.public Action<vector3> RightClick</vector3></h3>
+<blockquote>
+<p>&#x53F3;&#x952E;&#x4E8B;&#x4EF6;Action&#xFF0C;&#x76D1;&#x542C;&#x9F20;&#x6807;&#x53F3;&#x952E;&#x4E8B;&#x4EF6;<br>
+Vector3&#xFF1A;&#x53F3;&#x952E;&#x65F6;VR&#x7A7A;&#x95F4;&#x5750;&#x6807;&#x503C;</p>
+</blockquote>
+</blockquote>
+<h2 class="mume-header" id="%E5%9B%9B-%E6%9E%9A%E4%B8%BE%E8%AF%B4%E6%98%8E">&#x56DB;&#x3001;&#x679A;&#x4E3E;&#x8BF4;&#x660E;</h2>
+
+<blockquote>
+<h3>1.VR&#x8BBE;&#x5907;&#x7C7B;&#x578B;&#x679A;&#x4E3E;</h3>
+<blockquote>
+<pre data-role="codeBlock" data-info="" class="language-"><code>public enum DeviceType
+{
+   /// &lt;summary&gt;
+   /// &#x56FE;&#x7247;&#x6570;&#x636E;&#xFF08;bytes&#xFF09;&#x578B;&#x8BBE;&#x5907;
+   /// &lt;/summary&gt;
+   ImageData = 0,
+
+   /// &lt;summary&gt;
+   /// &#x56FE;&#x7247;url&#x578B;&#x8BBE;&#x5907;
+   /// &lt;/summary&gt;
+   ImageUrl = 1,
+
+   /// &lt;summary&gt;
+   /// &#x89C6;&#x9891;&#x6D41;&#x578B;&#x8BBE;&#x5907;
+   /// &lt;/summary&gt;
+   Video = 2
+}
+</code></pre></blockquote>
+</blockquote>
+<h2 class="mume-header" id="%E4%BA%94-vector3%E7%B1%BB">&#x4E94;&#x3001;Vector3&#x7C7B;</h2>
+
+<blockquote>
+<p>&#x4E09;&#x7EF4;&#x5750;&#x6807;&#xFF08;&#x5411;&#x91CF;&#xFF09;&#x7C7B;&#xFF1A;&#x5B9E;&#x73B0;&#x7C7B;&#x90E8;&#x5206;&#x5411;&#x91CF;&#x57FA;&#x672C;&#x64CD;&#x4F5C;</p>
+</blockquote>
+<h2 class="mume-header" id="%E5%85%AD-%E8%B0%83%E7%94%A8%E5%AE%9E%E4%BE%8B%E5%8F%82%E8%80%83">&#x516D;&#x3001;&#x8C03;&#x7528;&#x5B9E;&#x4F8B;&#x53C2;&#x8003;</h2>
+
+<pre data-role="codeBlock" data-info="CSharp" class="language-csharp">        <span class="token punctuation">[</span><span class="token class-name">DllImport</span><span class="token punctuation">(</span><span class="token string">&quot;User32.dll&quot;</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+        <span class="token keyword">static</span> <span class="token keyword">extern</span> <span class="token keyword">bool</span> <span class="token function">MoveWindow</span><span class="token punctuation">(</span><span class="token class-name">IntPtr</span> handle<span class="token punctuation">,</span> <span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">,</span> <span class="token keyword">int</span> width<span class="token punctuation">,</span> <span class="token keyword">int</span> height<span class="token punctuation">,</span> <span class="token keyword">bool</span> redraw<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">internal</span> <span class="token keyword">delegate</span> <span class="token keyword">int</span> <span class="token function">WindowEnumProc</span><span class="token punctuation">(</span><span class="token class-name">IntPtr</span> hwnd<span class="token punctuation">,</span> <span class="token class-name">IntPtr</span> lparam<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">[</span><span class="token class-name">DllImport</span><span class="token punctuation">(</span><span class="token string">&quot;user32.dll&quot;</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+        <span class="token keyword">internal</span> <span class="token keyword">static</span> <span class="token keyword">extern</span> <span class="token keyword">bool</span> <span class="token function">EnumChildWindows</span><span class="token punctuation">(</span><span class="token class-name">IntPtr</span> hwnd<span class="token punctuation">,</span> <span class="token class-name">WindowEnumProc</span> func<span class="token punctuation">,</span> <span class="token class-name">IntPtr</span> lParam<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token punctuation">[</span><span class="token class-name">DllImport</span><span class="token punctuation">(</span><span class="token string">&quot;user32.dll&quot;</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+        <span class="token keyword">static</span> <span class="token keyword">extern</span> <span class="token keyword">int</span> <span class="token function">SendMessage</span><span class="token punctuation">(</span><span class="token class-name">IntPtr</span> hWnd<span class="token punctuation">,</span> <span class="token keyword">int</span> msg<span class="token punctuation">,</span> <span class="token class-name">IntPtr</span> wParam<span class="token punctuation">,</span> <span class="token class-name">IntPtr</span> lParam<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">private</span> <span class="token class-name">IntPtr</span> unityHWND <span class="token operator">=</span> IntPtr<span class="token punctuation">.</span>Zero<span class="token punctuation">;</span>
+        <span class="token keyword">private</span> <span class="token class-name">VRDevice</span> vrDevice<span class="token punctuation">;</span>
+        <span class="token keyword">private</span> <span class="token keyword">const</span> <span class="token keyword">int</span> WM_ACTIVATE <span class="token operator">=</span> <span class="token number">0x0006</span><span class="token punctuation">;</span>
+        <span class="token keyword">private</span> <span class="token keyword">readonly</span> <span class="token class-name">IntPtr</span> WA_ACTIVE <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">IntPtr</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">private</span> <span class="token keyword">readonly</span> <span class="token class-name">IntPtr</span> WA_INACTIVE <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">IntPtr</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">private</span> <span class="token class-name">Vector3</span> tempPoint<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token function">MyForm</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">InitializeComponent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment">//&#x5B9A;&#x4E49;&#x8BBE;&#x5907;&#xFF0C;&#x7C7B;&#x578B;&#x4E3A;&#x56FE;&#x7247;URL&#xFF0C;socket&#x7AEF;&#x53E3;&#x4E3A;500</span>
+            vrDevice <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">VRDevice</span><span class="token punctuation">(</span>panel1<span class="token punctuation">.</span>Handle<span class="token punctuation">,</span> DeviceType<span class="token punctuation">.</span>ImageUrl<span class="token punctuation">,</span> <span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment">//&#x76D1;&#x542C;&#x521D;&#x59CB;&#x5316;&#x5B8C;&#x6210;&#x548C;&#x9F20;&#x6807;&#x53F3;&#x952E;&#x59D4;&#x6258;</span>
+            vrDevice<span class="token punctuation">.</span>HasInited <span class="token operator">+</span><span class="token operator">=</span> InitFinish<span class="token punctuation">;</span>
+            vrDevice<span class="token punctuation">.</span>RightClick <span class="token operator">+</span><span class="token operator">=</span> HandleRightClick<span class="token punctuation">;</span>
+
+            <span class="token comment">//&#x521D;&#x59CB;&#x5316;&#x8BBE;&#x5907;&#xFF0C;&#x5E76;&#x83B7;&#x53D6;&#x7A97;&#x53E3;&#x53E5;&#x67C4;</span>
+            unityHWND <span class="token operator">=</span> vrDevice<span class="token punctuation">.</span><span class="token function">Init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            tempPoint <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vector3</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">HandleRightClick</span><span class="token punctuation">(</span><span class="token class-name">Vector3</span> point<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            tempPoint <span class="token operator">=</span> point<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">InitFinish</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token comment">//&#x63A8;&#x9001;&#x573A;&#x666F;&#x56FE;&#x50CF;&#x6570;&#x636E;&#xFF0C;&#x6CE8;&#x610F;&#x5FC5;&#x987B;&#x8981;&#x521D;&#x59CB;&#x5316;&#x5B8C;&#x6210;&#x540E;&#x624D;&#x80FD;&#x8FDB;&#x884C;</span>
+            <span class="token comment">//string mes = vrDevice.InputFrameData(&quot;http://192.168.38.25:8088/test.png&quot;);</span>
+            <span class="token keyword">string</span> mes <span class="token operator">=</span> vrDevice<span class="token punctuation">.</span><span class="token function">InputFrameData</span><span class="token punctuation">(</span><span class="token string">&quot;D:/leaf/MyServerRoot/test.png&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">ActivateUnityWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">SendMessage</span><span class="token punctuation">(</span>unityHWND<span class="token punctuation">,</span> WM_ACTIVATE<span class="token punctuation">,</span> WA_ACTIVE<span class="token punctuation">,</span> IntPtr<span class="token punctuation">.</span>Zero<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">DeactivateUnityWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">SendMessage</span><span class="token punctuation">(</span>unityHWND<span class="token punctuation">,</span> WM_ACTIVATE<span class="token punctuation">,</span> WA_INACTIVE<span class="token punctuation">,</span> IntPtr<span class="token punctuation">.</span>Zero<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">panel1_Resize</span><span class="token punctuation">(</span><span class="token keyword">object</span> sender<span class="token punctuation">,</span> <span class="token class-name">EventArgs</span> e<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">MoveWindow</span><span class="token punctuation">(</span>unityHWND<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> panel1<span class="token punctuation">.</span>Width<span class="token punctuation">,</span> panel1<span class="token punctuation">.</span>Height<span class="token punctuation">,</span> <span class="token keyword">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">ActivateUnityWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// &#x7A97;&#x53E3;&#x5173;&#x95ED;&#x65F6;&#x5173;&#x95ED;&#x8BBE;&#x5907;</span>
+        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">MyForm_FormClosed</span><span class="token punctuation">(</span><span class="token keyword">object</span> sender<span class="token punctuation">,</span> <span class="token class-name">FormClosedEventArgs</span> e<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            vrDevice<span class="token punctuation">.</span><span class="token function">CloseVRDevice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">MyForm_Activated</span><span class="token punctuation">(</span><span class="token keyword">object</span> sender<span class="token punctuation">,</span> <span class="token class-name">EventArgs</span> e<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">ActivateUnityWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">MyForm_Deactivate</span><span class="token punctuation">(</span><span class="token keyword">object</span> sender<span class="token punctuation">,</span> <span class="token class-name">EventArgs</span> e<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">DeactivateUnityWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+</pre>
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
