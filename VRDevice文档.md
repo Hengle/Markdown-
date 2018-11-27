@@ -70,18 +70,18 @@
 >>相机缩放控制，通过改变相机视野大小实现缩放，相机视野取值范围设定为[20,100]
 >>value：速度值，每秒缩放度数，正值为放大，反之缩小
 
->>### 12.public void CameraZoomTarget(float value)
+>### 12.public void CameraZoomTarget(float value)
 >>视野缩放到指定系数
 >>value：缩放系数值，取值-1到1(1为放大原来一倍，-1为缩小原来一倍)。
 
->>### 13.public void StopCameraControl()
+>### 13.public void StopCameraControl()
 >>停止云台操作，包含转动和缩放
 
->>### 14.public int GetFieldOfView()
+>### 14.public int GetFieldOfView()
 >>获取当前VR空间相机视角值
 >>返回值：视角度数值
 
->>### 15.public void PauseVR(bool value)
+>### 15.public void PauseVR(bool value)
 >>暂停VRDevice
 >>value：true为暂停，false为取消暂停
 
