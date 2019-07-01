@@ -1,4 +1,7 @@
-CG 标准函数库   
+# CG 标准函数库
+
+[TOC]
+
    和 C 的标准函数库类似，Cg 提供了一系列内建的标准函数。这些函数用于执行数学上的通用计算或通用算法（纹理映射等），例如，需要求取入射光线的反射光线方向向量可以使用标准函数库中的 reflect 函数，求取折射光线方向向量可以使用 refract 函数，做矩阵乘法运算时可以使用 mul 函数。  
    有些函数直接和 GPU 指令相对应，所以执行效率非常高。绝大部分标准函数都被重载过，用于支持不同长度的数组和向量作为输入参数。  
 
@@ -9,7 +12,7 @@ CG 标准函数库
       偏导数函数(Derivative Functions)；   
       调试函数(Debugging Function) 
 
-      UnityCG.cginc中一些常用的帮助函数：
+## UnityCG.cginc中一些常用的帮助函数
 
 Function Name                               | Description
 ------------------------------------------- |-----------------------------
@@ -17,13 +20,14 @@ float3 WorldSpaceViewDir(float4 v)          | 输入一个模型空间中的顶�
 float3 UnityWorldSpaceViewDir(float4 v)     | 输入一个世界空间中的顶点位置，返回世界空间中从该点到摄像机的观察方向
 float3 ObjSpaceViewDir(float4 v)            | 输入一个模型空间中的顶点位置，返回模型空间中从改点到摄像机的观察方向
 float3 WorldSpaceLightDir(float4 v)         | 输入一个模型空间中的顶点位置，返回世界空间中从该点到光源的光照方向。内部使用了UnityWorldSpaceLightDir，没有被归一化
-float3 UnityWorldSpaceLightDir(float4 v)    | 输入一个世界空间中的顶点位置，返回世界空间中从该点到光源的光照方向。没有被归一化                             
-float3 ObjSpaceLightDir(float4 v)           | 输入一个模型空间中的顶点位置，返回模型空间从该点到光源的光照方向。没有被归一化                              
-float3 UnityObjectToWorldDir(float3 dir)    | 把方向矢量从模型空间变化到世界空间中                                                   
-float3 UnityObjectToWorldNormal(float3 dir) | 把法线方向从模型空间转换到世界空间中                                                   
+float3 UnityWorldSpaceLightDir(float4 v)    | 输入一个世界空间中的顶点位置，返回世界空间中从该点到光源的光照方向。没有被归一化
+float3 ObjSpaceLightDir(float4 v)           | 输入一个模型空间中的顶点位置，返回模型空间从该点到光源的光照方向。没有被归一化
+float3 UnityObjectToWorldDir(float3 dir)    | 把方向矢量从模型空间变化到世界空间中
+float3 UnityObjectToWorldNormal(float3 dir) | 把法线方向从模型空间转换到世界空间中
 float3 UnityWorldToObjectDir(float3 dir)    | 把方向矢量从世界空间变化到模型空间
 
-数学函数（Mathematical Functions）  
+## 数学函数（Mathematical Functions)
+
    数学函数用于执行数学上常用计算，包括：三角函数、幂函数、园函数、向量和矩阵的操作函数。这些函数都被重载，以支持标量数据和不同长度的向量作为输入参数。
  
  函数                                                             |功能 | 
@@ -55,113 +59,90 @@ max(a, b)|          比较两个标量或等长向量元素，返回 大值  min
 
 ---
 
-col 1                                | col 2
+col 1 | col 2
 ------------------------------------ | -------
- modf(x, out ip) | 
-mul(M, N)                     |     计算两个矩阵相乘，如果 M 为 AxB 阶矩阵，N 为 BxC 阶矩阵，则返回 AxC 阶矩阵。下面两个函数为其重载函数。
+modf(x, out ip) | 
+mul(M, N)       |     计算两个矩阵相乘，如果 M 为 AxB 阶矩阵，N 为 BxC 阶矩阵，则返回 AxC 阶矩阵。下面两个函数为其重载函数。
 mul(M, v)                      |       计算矩阵和向量相乘
 mul(v, M)                      |       计算向量和矩阵相乘
-    noise( x)                     |        噪声函数，返回值始终在 0，1 之间；对于同样的输入，始终返回相同的值（也就是说，并不是真正意义上的随机噪声）。                                                                                                                                                                                                                                                                       
-    pow(x, y)                     |                                                                                                                                                                                                                                                                                                                                       
-    radians(x)                     |       函数将角度值转换为弧度值                                                                                                                                                                                                                                                                                                                   
-    round(x)                       |       Round-to-nearest，或 closest integer to x 即四舍五入                                                                                                                                                                                                                                                                                  
-    rsqrt(x)                      |        X 的反平方根，x 必须大于 0                                                                                                                                                                                                                                                                                                               
-    saturate(x)                   |          
-如果 x 小于 0，返回 0；如果 x 大于 1，返回1；否则，返回 x                                                                                                                                                                                                                                                                                        
-    sign(x)                       |          
-如果 x 大于 0，返回 1；如果 x 小于 0，返回01；否则返回 0。                                                                                                                                                                                                                                                                                       
-    sin(x)                        |        输入参数为弧度，计算正弦值，返回值范围<sup>为</sup>[−1,1]                                                                                                                                                                                                                                                                                          
-    sincos(float x, out s, out c) |        该函数是同时计算 x 的 sin 值和 cos 值，其中 s=sin(x)，c=cos(x)。该函数用于“同时需要计算 sin 值和cos 值的情况”，比分别运算要快很多!                                                                                                                                                                                                                                         
-    sinh(x)                       |        计算双曲正弦（hyperbolic sine）值。                                                                                                                                                                                                                                                                                                      
-    smoothstep(min, max, x)        |         
-值 x 位于 min、max 区间中。如果 x=min，返回 0；如果 x=max，返回 1；如果 x 在两者之间，按照下列公式返回数据：   
-                x−min                  x−min  
-−2*(![](http://game.ceeger.com/forum/read.php?tid=16509&fid=2))<sup>3 </sup>+3*(  ![](http://game.ceeger.com/forum/read.php?tid=16509&fid=2))<sup>2</sup>   
-        max−min                 max−min
+noise( x)                     |        噪声函数，返回值始终在 0，1 之间；对于同样的输入，始终返回相同的值（也就是说，并不是真正意义上的随机噪声）。
+pow(x, y)  | 计算x的y次幂
+radians(x)                     |       函数将角度值转换为弧度值
+round(x)                       |       Round-to-nearest，或 closest integer to x 即四舍五入
+rsqrt(x)                      |        X 的反平方根，x 必须大于 0                saturate(x)   |     如果 x 小于 0，返回 0；如果 x 大于 1，返回1；否则，返回 x
+sign(x)        |     如果 x 大于 0，返回 1；如果 x 小于 0，返回01；否则返回 0。
+sin(x)                  | 输入参数为弧度，计算正弦值，返回值范围<sup>为</sup>[−1,1]
+sincos(float x, out s, out c) |  该函数是同时计算 x 的 sin 值和 cos 值，其中 s=sin(x)，c=cos(x)。该函数用于“同时需要计算 sin 值和cos 值的情况”，比分别运算要快很多!
+sinh(x)      |        计算双曲正弦（hyperbolic sine）值。
+smoothstep(min, max, x)  | 值 x 位于 min、max 区间中。如果 x=min，返回 0；如果 x=max，返回 1；如果 x 在两者之间，按照下列公式返回数据：x−min x−min  
+−2*(![](http://game.ceeger.com/forum/read.php?tid=16509&fid=2))<sup>3 </sup>+3*(  ![](http://game.ceeger.com/forum/read.php?tid=16509&fid=2))<sup>2</sup>
+max−min                 max−min
 
-col 1               | col 2                       
+
+col 1               | col 2
 ------------------- | ----------------------------
-    step(a, x)    |       如果 x<a，返回 0；否则，返回 1。    
-    sqrt(x)      |        求 x 的平方根， x ，x 必须大于 0。  
-    tan(x)       |        输入参数为弧度，计算正切值           
-    tanh(x)       |       计算双曲正切值                 
-    transpose(M) |        M 为矩阵，计算其转置矩阵             
-几何函数（Geometric Functions）  
+step(a, x)    |       如果 x<a，返回 0；否则，返回 1。
+sqrt(x)      |        求 x 的平方根， x ，x 必须大于 0。  
+tan(x)       |        输入参数为弧度，计算正切值
+tanh(x)       |       计算双曲正切值
+transpose(M) |        M 为矩阵，计算其转置矩阵
+
+## 几何函数（Geometric Functions)
+
 Cg 语言标准函数库中有  
 3 个几何函数会经常被使用到，分别是：normalize 函数，对向量进行归一化；reflect 函数，计算反射光方向向量；refract 函数，计算折射光方向向量。注意：   
         1  着色程序中的向量 好进行归一化之后再使用，否则会出现难以预料的错误；   
         2  reflect 函数和 refract 函数都存在以“入射光方向向量”作为输入参数，注意这两个函数中使用的入射光方向向量，是从外指向几何顶点的；平时我们在着色程序中或者在课本上都是将入射光方向向量作为从顶点出发。
 
-col 1                      | col 2                                                                                                        
--------------------------- | -------------------------------------------------------------------------------------------------------------
-  函数                     |       功能                                                                                                       
-    distance( pt1, pt2) |        两点之间的欧几里德距离（Euclidean distance）                                                                          
-    faceforward(N,I,Ng)  |       如果Ng I• < 0 ，返回 N；否则返回-N。                                                                                
-    length(v)           |        返回一个向量的模，即 sqrt(dot(v,v))                                                                                
-    normalize( v)       |        归一化向量                                                                                                    
-    reflect(I, N)       |        根据入射光方向向量 I，和顶点法向量 N，计算反射光方向向量。其中 I 和 N 必须被归一化，需要非常注意的是，这个 I 是指向顶点的；函数只对三元向量有效                           
-    refract(I,N,eta)    |        计算折射向量，I 为入射光线，N 为法向量，eta 为折射系数；其中 I 和 N 必须被归一化，如果 I 和 N 之间的夹角太大，则返回（0，0，0），也就是没有折射光线；I 是指向顶点的；函数只对三元向量有效
-                           |                                                                                                              
-                           |                                                                                                              
-                           |                                                                                                                
-纹理映射函数（Texture Map Functions）
+col 1                      | col 2
+-------------------------- |------------------------------
+函数                     |       功能
+distance( pt1, pt2)  |        两点之间的欧几里德距离（Euclidean distance）
+faceforward(N,I,Ng)  |       如果Ng I• < 0 ，返回 N；否则返回-N。
+length(v)           |        返回一个向量的模，即 sqrt(dot(v,v)) 
+normalize( v)       |        归一化向量  
+reflect(I, N)       |     根据入射光方向向量 I，和顶点法向量 N，计算反射光方向向量。其中 I 和 N 必须被归一化，需要非常注意的是，这个 I 是指向顶点的；函数只对三元向量有效
+refract(I,N,eta)    |        计算折射向量，I 为入射光线，N 为法向量，eta 为折射系数；其中 I 和 N 必须被归一化，如果 I 和 N 之间的夹角太大，则返回（0，0，0），也就是没有折射光线；I 是指向顶点的；函数只对三元向量有效
 
-col 1                                                                                                
------------------------------------------------------------------------------------------------------
-                                  函数                                                                 
+## 纹理映射函数（Texture Map Functions）
 
-tex1D(sampler1D tex, float s)                         一维纹理查询                                  
-
-tex1D(sampler1D tex, float s, float dsdx, float dsdy)       使用导数值（derivatives）查询一维纹理          
-
-Tex1D(sampler1D tex, float2 sz)                     一维纹理查询，并进行深度值比较                           
-
-Tex1D(sampler1D tex, float2 sz, float dsdx,float dsdy)      使用导数值（derivatives）查询一维纹理， 并进行深度值比较
-
-Tex1Dproj(sampler1D tex, float2 sq)                 一维投影纹理查询                                  
-
-Tex1Dproj(sampler1D tex, float3 szq)                一维投影纹理查询，并比较深度值                           
-
-Tex2D(sampler2D tex, float2 s)                       二维纹理查询                                   
-
-Tex2D(sampler2D tex, float2 s, float2 dsdx, float2 dsdy)     使用导数值（derivatives）查询二维纹理         
-
-Tex2D(sampler2D tex, float3 sz)                     二维纹理查询，并进行深度值比较                           
-
-Tex2D(sampler2D tex, float3 sz, float2 dsdx,float2 dsdy)  使用导数值（derivatives）查询二维纹理，并进行深度值比较   
-
-Tex2Dproj(sampler2D tex, float3 sq)                 二维投影纹理查询                                  
-
-Tex2Dproj(sampler2D tex, float4 szq)                二维投影纹理查询，并进行深度值比较                         
-    texRECT(samplerRECT tex, float2 s)                                                               
-    texRECT (samplerRECT tex, float2 s, float2 dsdx, float2 dsdy)                                    
-    texRECT (samplerRECT tex, float3 sz)                                                             
-    texRECT (samplerRECT tex, float3 sz, float2 dsdx,float2 dsdy)                                    
-    texRECT proj(samplerRECT tex, float3 sq)                                                         
-    texRECT proj(samplerRECT tex, float3 szq)                                                        
-
-Tex3D(sampler3D tex, float s)                          三维纹理查询                                 
-
-Tex3D(sampler3D tex, float3 s, float3 dsdx, float3 dsdy)       结合导数值（derivatives）查询三维纹理       
-
-Tex3Dproj(sampler3D tex, float4 szq)                   查询三维投影纹理，并进行深度值比较                      
-
-texCUBE(samplerCUBE tex, float3 s)                    查询立方体纹理                                 
-
-texCUBE (samplerCUBE tex, float3 s, float3 dsdx, float3 dsdy)    结合导数值（derivatives）查询立方体纹理    
-
-texCUBEproj (samplerCUBE tex, float4 sq) 查询投影立方体纹理                                              
+函数                     |       功能
+-------------------------- |------------------------------
+tex1D(sampler1D tex, float s)  |一维纹理查询
+tex1D(sampler1D tex, float s, float dsdx, float dsdy)     |  使用导数值（derivatives）查询一维纹理
+Tex1D(sampler1D tex, float2 sz)          |       一维纹理查询，并进行深度值比较   Tex1D(sampler1D tex, float2 sz, float dsdx,float dsdy)     | 使用导数值（derivatives）查询一维纹理， 并进行深度值比较
+Tex1Dproj(sampler1D tex, float2 sq)        |         一维投影纹理查询                                  Tex1Dproj(sampler1D tex, float3 szq)  |              一维投影纹理查询，并比较深度值
+Tex2D(sampler2D tex, float2 s)        |               二维纹理查询
+Tex2D(sampler2D tex, float2 s, float2 dsdx, float2 dsdy)   |  使用导数值（derivatives）查询二维纹理
+Tex2D(sampler2D tex, float3 sz)         |         二维纹理查询，并进行深度值比较
+Tex2D(sampler2D tex, float3 sz, float2 dsdx,float2 dsdy) | 使用导数值（derivatives）查询二维纹理，并进行深度值比较
+Tex2Dproj(sampler2D tex, float3 sq)           |      二维投影纹理查询            Tex2Dproj(sampler2D tex, float4 szq)     |     二维投影纹理查询，并进行深度值比较  texRECT(samplerRECT tex, float2 s)      |
+texRECT (samplerRECT tex, float2 s, float2 dsdx, float2 dsdy)  |
+texRECT (samplerRECT tex, float3 sz)   |
+texRECT (samplerRECT tex, float3 sz, float2 dsdx,float2 dsdy)    |
+texRECT proj(samplerRECT tex, float3 sq) |
+texRECT proj(samplerRECT tex, float3 szq) |
+Tex3D(sampler3D tex, float s)        |   三维纹理查询
+Tex3D(sampler3D tex, float3 s, float3 dsdx, float3 dsdy)     |  结合导数值（derivatives）查询三维纹理
+Tex3Dproj(sampler3D tex, float4 szq)     |     查询三维投影纹理，并进行深度值比较  texCUBE(samplerCUBE tex, float3 s)       |             查询立方体纹理
+texCUBE (samplerCUBE tex, float3 s, float3 dsdx, float3 dsdy) |   结合导数值（derivatives）查询立方体纹理
+texCUBEproj (samplerCUBE tex, float4 sq)| 查询投影立方体纹理
        s 象征一元、二元、三元纹理坐标；z 代表使用“深度比较（depth comparison）” 的值；q 表示一个透视值（perspective value,其实就是透视投影后所得到的齐次坐标的 后一位），这个值被用来除以纹理坐标（S），得到新的纹理坐标（已归一化到 0 和 1 之间）然后用于纹理查询。  
-   纹理函数非常多，总的来说，按照纹理维数进行分类，即：1D 纹理函数， 2D 纹理函数，3D 纹理函数，已经立方体纹理。需要注意，TexREC 函数查询的纹理实际上也是二维纹理。 3D 纹理，另一个比较学术化的名称是“体纹理（Volume Texture）”，体纹理通常用于体绘制，体纹理用于记录空间中的体细节数据。  
-   还有一类较为特殊的纹理查询函数以 proj 结尾，主要是针对投影纹理进行查询。所谓投影纹理是指：将纹理当做一张幻灯片投影到场景中，使用投影纹理技术需要计算投影纹理坐标，然后使用投影纹理坐标进行查询。使用投影纹理坐标进行查询的函数就是投影纹理查询函数。   本质来说，投影纹理查询函数和普通的纹理查询函数没有什么不同，唯一的区别在于“投影纹理查询函数使用计算得到的投影纹理坐标，并在使用之前会将该投影纹理坐标除以透视值”。举例而言，计算得到的投影纹理坐标为 float4 uvproj，使用二维投影纹理查询函数：   
-    tex2Dproj(texture,uvproj); 等价于按如下方法使用普通二维纹理查询函数：             
-     float4 uvproj = uvproj/uvproj.q; tex2D(texture,uvproj);  偏导函数（Derivative Functions）  
 
-col 1                             | col 2                                    
+纹理函数非常多，总的来说，按照纹理维数进行分类，即：1D 纹理函数， 2D 纹理函数，3D 纹理函数，已经立方体纹理。需要注意，TexREC 函数查询的纹理实际上也是二维纹理。 3D 纹理，另一个比较学术化的名称是“体纹理（Volume Texture）”，体纹理通常用于体绘制，体纹理用于记录空间中的体细节数据。  
+还有一类较为特殊的纹理查询函数以 proj 结尾，主要是针对投影纹理进行查询。所谓投影纹理是指：将纹理当做一张幻灯片投影到场景中，使用投影纹理技术需要计算投影纹理坐标，然后使用投影纹理坐标进行查询。使用投影纹理坐标进行查询的函数就是投影纹理查询函数。   本质来说，投影纹理查询函数和普通的纹理查询函数没有什么不同，唯一的区别在于“投影纹理查询函数使用计算得到的投影纹理坐标，并在使用之前会将该投影纹理坐标除以透视值”。
+举例而言，计算得到的投影纹理坐标为 float4 uvproj，
+使用二维投影纹理查询函数：tex2Dproj(texture,uvproj); 
+等价于按如下方法使用普通二维纹理查询函数：
+loat4 uvproj = uvproj/uvproj.q; tex2D(texture,uvproj);  
+
+## 偏导函数（Derivative Functions）  
+
+col 1                             | col 2
 --------------------------------- | -----------------------------------------
-                        函数     |                            功能               
-                        ddx(a) |            参数 a 对应一个像素位置，返回该像素值在 X 轴上的偏导数   
-                        ddy(a) |            参数 a 对应一个像素位置，返回该像素值在 X 轴上的偏导数   
+函数     |                            功能
+ddx(a) |            参数 a 对应一个像素位置，返回该像素值在 X 轴上的偏导数
+ddy(a) |            参数 a 对应一个像素位置，返回该像素值在 X 轴上的偏导数
 
 1.  函数 ddx 和 ddy 用于求取相邻像素间某属性的差值；
 2.  函数 ddx 和 ddy 的输入参数通常是纹理坐标；
