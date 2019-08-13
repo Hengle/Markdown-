@@ -1,5 +1,23 @@
 # Unity shader查询手册——选项设置
 
+## RenderType
+RenderType通常使用的值包括：
+``` glsl
+Opaque: 用于大多数着色器（法线着色器、自发光着色器、反射着色器以及地形的着色器）。
+Transparent:用于半透明着色器（透明着色器、粒子着色器、字体着色器、地形额外通道的着色器）。
+TransparentCutout: 蒙皮透明着色器（Transparent Cutout，两个通道的植被着色器）。
+Background: Skybox shaders. 天空盒着色器。
+Overlay: GUITexture, Halo, Flare shaders. 光晕着色器、闪光着色器。
+TreeOpaque: terrain engine tree bark. 地形引擎中的树皮。
+TreeTransparentCutout: terrain engine tree leaves. 地形引擎中的树叶。
+TreeBillboard: terrain engine billboarded trees. 地形引擎中的广告牌树。
+Grass: terrain engine grass. 地形引擎中的草。
+GrassBillboard: terrain engine billboarded grass. 地形引擎何中的广告牌草。
+这些RenderType的类型名称实际上是一种约定，用来区别这个Shader要渲染的对象，当然你也可以改成自定义的名称，只不过需要自己区别场景中不同渲染对象使用的Shader的RenderType的类型名称不同，也就是说RenderType类型名称使用自定义的名称并不会对该Shader的使用和着色效果产生影响。
+```
+指定RenderType的名称，主要是为了配合使用替代渲染的方法：
+>Camera.SetReplacementShader("shader","RenderType")  
+
 ## LOD
 ``` glsl
 1:LOD Level of Detail, 根据LOD来设置使用不同版本的Shader;
